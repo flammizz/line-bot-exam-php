@@ -80,8 +80,8 @@ else if($message == "เฟรมมี่"){
 }
 
 else if($message == "Test"){
-    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-$arrayPostData = '{
+  $arrayPostData = '{
+"replyToken": "'.$arrayJson['events'][0]['replyToken'].'",
   "type": "template",
   "altText": "this is a carousel template",
   "template": {
@@ -129,7 +129,8 @@ $arrayPostData = '{
     ]
   }
 }';
-    replyMsg($arrayHeader,$arrayPostData);
+     replyMsg($arrayHeader,$arrayPostData);
+$arrayPostData = json_decode($arrayPostData,true);
 }
 
 function replyMsg($arrayHeader,$arrayPostData){
