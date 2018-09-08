@@ -59,6 +59,27 @@ else if($message == "ลาก่อน"){
     replyMsg($arrayHeader,$arrayPostData);
 }
 
+else if($message == "เบลล่า"){
+    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+    $arrayPostData['messages'][0]['type'] = "text";
+    $arrayPostData['messages'][0]['text'] = "น่ากลัว";
+    $arrayPostData['messages'][1]['type'] = "sticker";
+    $arrayPostData['messages'][1]['packageId'] = "2";
+    $arrayPostData['messages'][1]['stickerId'] = "152";
+    replyMsg($arrayHeader,$arrayPostData);
+}
+
+else if($message == "เฟรมมี่"){
+    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+    $arrayPostData['messages'][0]['type'] = "text";
+    $arrayPostData['messages'][0]['text'] = "น่ารักฝุดๆ";
+    $arrayPostData['messages'][1]['type'] = "sticker";
+    $arrayPostData['messages'][1]['packageId'] = "1";
+    $arrayPostData['messages'][1]['stickerId'] = "2";
+    replyMsg($arrayHeader,$arrayPostData);
+}
+
+
 function replyMsg($arrayHeader,$arrayPostData){
     $strUrl = "https://api.line.me/v2/bot/message/reply";
     $ch = curl_init();
