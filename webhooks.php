@@ -79,6 +79,58 @@ else if($message == "เฟรมมี่"){
     replyMsg($arrayHeader,$arrayPostData);
 }
 
+else if($message == "Test"){
+    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+$arrayPostData = '{
+  "type": "template",
+  "altText": "this is a carousel template",
+  "template": {
+    "type": "carousel",
+    "actions": [],
+    "columns": [
+      {
+        "thumbnailImageUrl": "https://qz.com/wp-content/uploads/2017/01/apple-airpods-review-very-useful.jpg?quality=80&strip=all&w=3500",
+        "title": "Airpods",
+        "text": "฿6,900",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "Buy",
+            "text": "Buy",
+            "data": "id=1&action=buy"
+          },
+          {
+            "type": "postback",
+            "label": "Add to Bag",
+            "text": "Add to Bag",
+            "data": "id=1&action=bag"
+          }
+        ]
+      },
+      {
+        "thumbnailImageUrl": "http://mikient.com/image/cache/catalog/beats-x-2-500x500.jpg",
+        "title": "BeatsX",
+        "text": "฿5,900",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "Buy",
+            "text": "Buy",
+            "data": "id=2&action=buy"
+          },
+          {
+            "type": "postback",
+            "label": "Add to Bag",
+            "text": "Add to Bag",
+            "data": "id=2&action=bag"
+          }
+        ]
+      }
+    ]
+  }
+}';
+    replyMsg($arrayHeader,$arrayPostData);
+}
 
 function replyMsg($arrayHeader,$arrayPostData){
     $strUrl = "https://api.line.me/v2/bot/message/reply";
