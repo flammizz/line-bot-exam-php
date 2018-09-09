@@ -68,7 +68,6 @@ else if($message == "เบลล่า"){
     $arrayPostData['messages'][1]['stickerId'] = "152";
     replyMsg($arrayHeader,$arrayPostData);
 }
-
 else if($message == "เฟรมมี่"){
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
     $arrayPostData['messages'][0]['type'] = "text";
@@ -78,59 +77,24 @@ else if($message == "เฟรมมี่"){
     $arrayPostData['messages'][1]['stickerId'] = "2";
     replyMsg($arrayHeader,$arrayPostData);
 }
-
-else if($message == "Test"){
-  $arrayPostData = '{
-"replyToken": "'.$arrayJson['events'][0]['replyToken'].'",
-  "type": "template",
-  "altText": "this is a carousel template",
-  "template": {
-    "type": "carousel",
-    "actions": [],
-    "columns": [
-      {
-        "thumbnailImageUrl": "https://qz.com/wp-content/uploads/2017/01/apple-airpods-review-very-useful.jpg?quality=80&strip=all&w=3500",
-        "title": "Airpods",
-        "text": "฿6,900",
-        "actions": [
-          {
-            "type": "postback",
-            "label": "Buy",
-            "text": "Buy",
-            "data": "id=1&action=buy"
-          },
-          {
-            "type": "postback",
-            "label": "Add to Bag",
-            "text": "Add to Bag",
-            "data": "id=1&action=bag"
-          }
-        ]
-      },
-      {
-        "thumbnailImageUrl": "http://mikient.com/image/cache/catalog/beats-x-2-500x500.jpg",
-        "title": "BeatsX",
-        "text": "฿5,900",
-        "actions": [
-          {
-            "type": "postback",
-            "label": "Buy",
-            "text": "Buy",
-            "data": "id=2&action=buy"
-          },
-          {
-            "type": "postback",
-            "label": "Add to Bag",
-            "text": "Add to Bag",
-            "data": "id=2&action=bag"
-          }
-        ]
-      }
-    ]
-  }
-}';
+else if($arrJson['events'][0]['message']['text'] == "ชื่ออะไร"){
+  $arrPostData = array();
+  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  $arrPostData['messages'][0]['type'] = "text";
+  $arrPostData['messages'][0]['text'] = "ฉันยังไม่มีชื่อนะ";
      replyMsg($arrayHeader,$arrayPostData);
-$arrayPostData = json_decode($arrayPostData,true);
+}else if($arrJson['events'][0]['message']['text'] == "ทำอะไรได้บ้าง"){
+  $arrPostData = array();
+  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  $arrPostData['messages'][0]['type'] = "text";
+  $arrPostData['messages'][0]['text'] = "ฉันทำอะไรไม่ได้เลย คุณต้องสอนฉันอีกเยอะ";
+     replyMsg($arrayHeader,$arrayPostData);
+}else{
+  $arrPostData = array();
+  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  $arrPostData['messages'][0]['type'] = "text";
+  $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
+     replyMsg($arrayHeader,$arrayPostData);
 }
 
 function replyMsg($arrayHeader,$arrayPostData){
